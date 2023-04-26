@@ -34,10 +34,10 @@ function Countdown({
   //   const formattedCountdown = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 
   return (
-    <>
-      <span>{minutes.toString().padStart(2, "0")}</span>
-      <span>:</span>
-      <span>{seconds.toString().padStart(2, "0")}</span>
+    <div className="flex items-center justify-center h-full w-full md:flex-row flex-col gap-4">
+      <span className="bg-second-light dark:bg-second-dark drop-shadow-md text-[30px] p-10 rounded-lg">{minutes.toString().padStart(2, "0")}</span>
+      {/* <span>:</span> */}
+      <span className="bg-second-light dark:bg-second-dark drop-shadow-md text-[30px] p-10 rounded-lg">{seconds.toString().padStart(2, "0")}</span>
       <br />
       {lastEvent === "break" && (
         <ReactConfetti
@@ -47,7 +47,7 @@ function Countdown({
           recycle={true}
         />
       )}
-    </>
+    </div>
   );
 }
 
