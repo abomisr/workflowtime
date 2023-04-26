@@ -1,31 +1,22 @@
-import { useEffect, useState } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { useAppStore } from "../../../lib/store";
 
 function ThemeToggle() {
-  const {isDark,toggleDark} = useAppStore();
+  const { isDark, toggleDark } = useAppStore();
 
   return (
-    <div className="relative">
-      <button
-        className={`button ${
-          isDark ? "bg-gray-900 text-purple-500" : "bg-gray-100 text-orange-500"
-        }`}
-        onClick={toggleDark}
-      >
+      <button className="relative w-12 h-6 rounded-xl bg-orange-400 dark:bg-purple-400 drop-shadow-md overflow-hidden" onClick={toggleDark}>
         {isDark ? (
           <>
-            <FaMoon />
-            <div className="circle absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-purple-500 w-8 h-8 rounded-full opacity-0 transition duration-300" />
+            <FaMoon className="absolute top-1 left-1 text-purple-900" />
           </>
         ) : (
           <>
-            <FaSun />
-            <div className="circle absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-orange-500 w-8 h-8 rounded-full opacity-0 transition duration-300" />
+            <FaSun className="absolute top-1 right-1 text-orange-900" />
           </>
         )}
+        <span className={`rounded-full w-[50%] h-full bg-white drop-shadow-lg block absolute top-0 transition-all ${isDark ? "translate-x-[100%]":"translate-x-0"}`}></span>
       </button>
-    </div>
   );
 }
 

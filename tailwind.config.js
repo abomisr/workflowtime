@@ -11,8 +11,8 @@ module.exports = {
       backgroundColor:{
         "first-light":"#F0F0F0",
         "second-light":"#FFFFFF",
-        "first-dark":"#212121",
-        "second-dark":"#424242"
+        "first-dark":"#150125",
+        "second-dark":"#350460"
       },
       
       backgroundImage: {
