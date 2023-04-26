@@ -1,12 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
+import { useAppStore } from "../../../lib/store";
 
-function DarkMode() {
-  const [isDark, setIsDark] = useState(false);
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-  };
+function ThemeToggle() {
+  const {isDark,toggleDark} = useAppStore();
 
   return (
     <div className="relative">
@@ -14,7 +11,7 @@ function DarkMode() {
         className={`button ${
           isDark ? "bg-gray-900 text-purple-500" : "bg-gray-100 text-orange-500"
         }`}
-        onClick={toggleTheme}
+        onClick={toggleDark}
       >
         {isDark ? (
           <>
@@ -32,4 +29,4 @@ function DarkMode() {
   );
 }
 
-export default DarkMode;
+export default ThemeToggle;
