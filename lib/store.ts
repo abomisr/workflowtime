@@ -8,6 +8,8 @@ type AppStoreState = {
     setWorkflowInMinutes:(duration: number)=>void;
     breakInMinutes:number;
     setBreakInMinutes:(duration: number)=>void;
+    isSettingsShown:boolean;
+    toggleSettingsStatus:()=>void;
 }
 
 export const useAppStore = add<AppStoreState>()(set => ({
@@ -17,6 +19,8 @@ export const useAppStore = add<AppStoreState>()(set => ({
   setWorkflowInMinutes:(duration)=> set(()=>({workflowInMinutes: duration})),
   breakInMinutes:5,
   setBreakInMinutes:(duration)=> set(()=>({breakInMinutes: duration})),
+  isSettingsShown: false,
+  toggleSettingsStatus: ()=> set((state)=>({isSettingsShown: !state.isSettingsShown}))
 }))
 
 

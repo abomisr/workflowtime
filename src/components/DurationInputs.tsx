@@ -19,7 +19,7 @@ const DurationInputs = () => {
   };
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="flex md:flex-row flex-col h-40 bg-second-light dark:bg-second-dark w-full">
         <input
           value={workflowInput || ""}
           onChange={(e)=>{setWorkflowInput(+e.target.value)}}
