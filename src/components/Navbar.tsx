@@ -6,30 +6,35 @@ import { useAppStore } from "../../lib/store";
 import DurationInputs from "@/components/DurationInputs";
 
 const Navbar = () => {
-  const { isSettingsShown, toggleSettingsStatus } = useAppStore();
+  const { handleClick, isClicked,closeAllClicked } = useAppStore();
 
   return (
     <>
-      {/* {<DurationInputs />} */}
-      {isSettingsShown && (
-        <div
-          id="navbar"
-          className="fixed bottom-[90px] right-3 p-3  drop-shadow-sm z-[1000] bg-second-light dark:bg-second-dark rounded-2xl flex items-center justify-center gap-7 flex-col"
-        >
-          <ThemeToggle />
-          <button className="p-2.5 drop-shadow-md text-[28px] bg-sky-600 text-white rounded-full">
-            <GiDuration />
-          </button>
-        </div>
+      {isClicked.durations && <DurationInputs />}
+      {isClicked.settings && (
+        <>
+          <div
+            id="navbar"
+            className="fixed bottom-[90px] right-3 p-3  drop-shadow-sm z-[1000] bg-second-light dark:bg-second-dark rounded-2xl flex items-center justify-center gap-7 flex-col"
+          >
+            <ThemeToggle />
+            <button onClick={()=>handleClick("durations")} className="p-2.5 drop-shadow-md text-[28px] bg-sky-600 text-white rounded-full">
+              <GiDuration />
+            </button>
+          </div>
+        </>
       )}
       <button
-        onClick={toggleSettingsStatus}
+        onClick={()=>handleClick("settings")}
         className={`fixed right-5 bottom-5 z-[1001] ${
-          isSettingsShown && "rotate-[135deg]"
-        } active:scale-90 transition-all duration-400 p-4 bg-second-light dark:bg-second-dark rounded-full drop-shadow-md`}
+          isClicked.settings && "rotate-[135deg]"
+        } transition-all duration-400 p-4 bg-second-light dark:bg-second-dark rounded-full drop-shadow-md`}
       >
         <RiSettingsFill className="text-[22px]" />
       </button>
+      {(isClicked.durations || isClicked.settings) &&
+      <span onClick={closeAllClicked} className="block backdrop-blur-sm w-screen h-screen absolute top-0"></span>
+      }
     </>
   );
 };
