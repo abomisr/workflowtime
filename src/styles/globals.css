@@ -5,3 +5,25 @@
 *{
     transition: 150ms;
 }
+
+#navbar{
+    animation: navbar 500ms ease both;
+}
+
+@keyframes navbar {
+    0%{
+        transform: translateY(calc(100% + 100px));
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+button{
+    opacity: 0.95;
+}
+button:hover{
+    opacity: 1;
+}
