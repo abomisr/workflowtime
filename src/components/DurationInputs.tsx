@@ -40,7 +40,7 @@ const DurationInputs = () => {
           required
           min="5"
           placeholder="Workflow duration"
-          className='drop-shadow-sm'
+          className='drop-shadow-sm dark:text-black'
         />
         <input
           value={breakInput || ""}
@@ -49,7 +49,7 @@ const DurationInputs = () => {
           required
           min="0"
           placeholder="Break duration"      
-          className='drop-shadow-sm'
+          className='drop-shadow-sm dark:text-black'
         />
         <button type="submit" className='bg-blue-600 p-2.5 w-[60%] mx-auto rounded-md disabled:bg-gray-500 text-white disabled:active:scale-100 disabled:cursor-not-allowed' disabled={workflowInput === workflowInMinutes && breakInput === breakInMinutes}>Save</button>
       </form>

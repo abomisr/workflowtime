@@ -5,7 +5,6 @@ const initialStates = {
   durations:false,
 }
 
-type initialStatesType = {settings:boolean,durations:boolean}
 type AppStoreState = {
     isDark:boolean;
     toggleDark:()=>void;
@@ -13,10 +12,12 @@ type AppStoreState = {
     setWorkflowInMinutes:(duration: number)=>void;
     breakInMinutes:number;
     setBreakInMinutes:(duration: number)=>void;
-    isClicked:initialStatesType;
+    isClicked:Record<string,boolean>;
     closeAllClicked:()=>void;
     handleClick:(clicked: string)=>void;
-    initialStates:initialStatesType
+    initialStates:Record<string,boolean>,
+    started:boolean,
+    setStarted:(setTo:boolean)=>void;
 }
 
 export const useAppStore = add<AppStoreState>()(set => ({
@@ -27,9 +28,11 @@ export const useAppStore = add<AppStoreState>()(set => ({
   breakInMinutes:5,
   setBreakInMinutes:(duration)=> set(()=>({breakInMinutes: duration})),
   isClicked: initialStates,
-  handleClick: (clicked)=> set((state)=>({isClicked: {...initialStates, [clicked]:!state.isClicked[clicked]}})),
+  handleClick: (clicked:string)=> set((state)=>({isClicked: {...initialStates, [clicked]:!state.isClicked[clicked]}})),
   closeAllClicked: ()=> set(()=>({isClicked: initialStates})),
   initialStates:initialStates,
+  started: false,
+setStarted: (setTo)=>set(()=>({started:setTo})),
 }))
 
 
