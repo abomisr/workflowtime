@@ -9,6 +9,7 @@ const DurationInputs = () => {
     setWorkflowInMinutes,
     breakInMinutes,
     setBreakInMinutes,
+    closeAllClicked,
   } = useAppStore();
   const [workflowInput,setWorkflowInput] = useState(workflowInMinutes)
   const [breakInput,setBreakInput] = useState(breakInMinutes)
@@ -16,6 +17,7 @@ const DurationInputs = () => {
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     
+    closeAllClicked()
     setWorkflowInMinutes(workflowInput);
     setBreakInMinutes(breakInput);
   };  
@@ -28,9 +30,9 @@ const DurationInputs = () => {
 
   return (
   <>
-    <div className="fixed top-0 right-0 -translate-x-[13%] translate-y-[100%] h-40 w-[80vw] z-10">
-  <animated.div style={props} className="w-full h-full">
-      <form onSubmit={handleSubmit} className="flex flex-col bg-second-light dark:bg-second-dark h-full md:w-[50%] mx-auto w-full ">
+    <div className="fixed top-0 right-0 -translate-x-[13%] translate-y-[100%] w-[80vw] z-10">
+  <animated.div style={props} className="w-full h-full duration-100">
+      <form onSubmit={handleSubmit} className="flex flex-col p-8 gap-4 bg-second-light dark:bg-second-dark h-full md:w-[50%] mx-auto w-full rounded-lg">
         <input
           value={workflowInput || ""}
           onChange={(e)=>{setWorkflowInput(+e.target.value)}}
@@ -38,6 +40,7 @@ const DurationInputs = () => {
           required
           min="5"
           placeholder="Workflow duration"
+          className='drop-shadow-sm'
         />
         <input
           value={breakInput || ""}
@@ -46,8 +49,9 @@ const DurationInputs = () => {
           required
           min="0"
           placeholder="Break duration"      
+          className='drop-shadow-sm'
         />
-        <button type="submit" disabled={workflowInput === workflowInMinutes && breakInput === breakInMinutes}>Save</button>
+        <button type="submit" className='bg-blue-600 p-2.5 w-[60%] mx-auto rounded-md disabled:bg-gray-500 text-white disabled:active:scale-100 disabled:cursor-not-allowed' disabled={workflowInput === workflowInMinutes && breakInput === breakInMinutes}>Save</button>
       </form>
     </animated.div>
     </div>

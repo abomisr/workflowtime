@@ -43,5 +43,5 @@ input:hover{
     border: 1px lightgray solid;
 }
 input:focus{
-    border: 2px gray solid;
+    border: 1px gray solid;
 }
