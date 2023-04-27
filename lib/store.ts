@@ -1,9 +1,11 @@
 import { create as add } from 'zustand'
+import { navbarItems } from "../constants";
 
-const initialStates = {
-  settings:false,
-  durations:false,
+const initialStates:Record<string,boolean> = {
+  settings:false
 }
+navbarItems.map((item)=> initialStates[item.title] = false)
+
 
 type AppStoreState = {
     isDark:boolean;
@@ -18,7 +20,10 @@ type AppStoreState = {
     initialStates:Record<string,boolean>,
     started:boolean,
     setStarted:(setTo:boolean)=>void;
+    lang:string,
+    setLang:(la:string)=>void;
 }
+
 
 export const useAppStore = add<AppStoreState>()(set => ({
   isDark: false,
@@ -32,7 +37,8 @@ export const useAppStore = add<AppStoreState>()(set => ({
   closeAllClicked: ()=> set(()=>({isClicked: initialStates})),
   initialStates:initialStates,
   started: false,
-setStarted: (setTo)=>set(()=>({started:setTo})),
+  setStarted: (setTo)=>set(()=>({started:setTo})),
+  lang: "en",
+  setLang:(la) => set(()=>({lang:la})),
 }))
-
 

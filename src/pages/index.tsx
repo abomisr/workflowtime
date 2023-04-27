@@ -3,24 +3,48 @@ import { useAppStore } from "../../lib/store";
 import Navbar from "@/components/Navbar";
 import { useEffect, useState } from "react";
 import Head from "next/head";
-import { useTranslation } from 'next-i18next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/router";
 
 export default function Home() {
-  const { t } = useTranslation('common')
+  const { t } = useTranslation("common");
 
-  const { isDark, workflowInMinutes, breakInMinutes, started, setStarted } =
-    useAppStore();
+  const {
+    isDark,
+    workflowInMinutes,
+    breakInMinutes,
+    started,
+    setStarted,
+    lang,
+    setLang,
+  } = useAppStore();
   const [resetCounter, setResetCounter] = useState(1);
 
 
+  // update the lang
+  const router = useRouter();
+  useEffect(() => {
+    const currentLang = router.locale;
+    if (typeof window !== "undefined" && currentLang !== lang && currentLang) {
+      setLang(currentLang);
+    }
+    return;
+  }, [router.locale]);
+
+  
   return (
-    <main dir="rtl" className={`${isDark && "dark"}`}>
+    <main dir={lang == "ar" ? "rtl" : "lft"} className={`${isDark && "dark"}`}>
       <Head>
         <title>Workflow time</title>
-        <meta name="description" content="start your workflow time with workflowtime." />
-        <meta name="keywords" content="workflow,promo,promodo,break,countdown" />
+        <meta
+          name="description"
+          content="start your workflow time with workflowtime."
+        />
+        <meta
+          name="keywords"
+          content="workflow,promo,promodo,break,countdown"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div className="w-screen h-screen flex flex-col bg-first-light dark:bg-first-dark text-slate-800 dark:text-slate-200">
@@ -37,7 +61,7 @@ export default function Home() {
             }
             className={`p-2.5 rounded-md bg-sky-600 text-white px-10`}
           >
-            {started? t("reset"):t("start")}
+            {started ? t("reset") : t("start")}
           </button>
         </div>
         <Navbar />
@@ -46,16 +70,11 @@ export default function Home() {
   );
 }
 
-
-
-
 export async function getStaticProps({ locale }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, [
-        'common',
-      ])),
+      ...(await serverSideTranslations(locale, ["common"])),
       // Will be passed to the page component as props
     },
-  }
+  };
 }
