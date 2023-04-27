@@ -12,7 +12,7 @@ const Navbar = () => {
   const { handleClick, isClicked, closeAllClicked } = useAppStore();
 
   return (
-    <>
+    <div className="w-screen h-screen fixed top-0 right-0 flex items-center justify-center">
       {isClicked.durations && <DurationInputs />}
       {isClicked.languages && <Languages />}
       {isClicked.settings && (
@@ -45,13 +45,13 @@ const Navbar = () => {
       >
         <RiSettingsFill className="text-[22px]" />
       </button>
-      {(isClicked.durations || isClicked.settings) && (
+      {(isClicked.durations || isClicked.settings || isClicked.languages) && (
         <span
           onClick={closeAllClicked}
           className="block backdrop-blur-sm w-screen h-screen absolute top-0"
         ></span>
       )}
-    </>
+    </div>
   );
 };
 

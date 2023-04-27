@@ -21,4 +21,17 @@ const navbarItems:navbarItemsType = [
     },
 ]
 
-export {navbarItems}
+const langs = [
+    {
+        icon:"🇸🇦",
+        title:"اللغة العربية",
+        locale:"ar"
+    },
+    {
+        icon:"🇬🇧",
+        title:"English",
+        locale:"en"
+    },
+]
+
+export {navbarItems,langs}
