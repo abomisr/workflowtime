@@ -7,14 +7,16 @@ import DurationInputs from "./DurationInputs";
 import Languages from "./Languages";
 
 import { navbarItems } from "../../constants";
+import CloseAllClicked from "./CloseAllClicked";
+import SettingsSection from "./SettingsSection";
 
 const Navbar = () => {
-  const { handleClick, isClicked, closeAllClicked } = useAppStore();
+  const { handleClick, isClicked } = useAppStore();
 
   return (
-    <div className="w-screen h-screen fixed top-0 right-0 flex items-center justify-center">
-      {isClicked.durations && <DurationInputs />}
-      {isClicked.languages && <Languages />}
+    <>
+      {isClicked.durations && <SettingsSection Content={DurationInputs} />}
+      {isClicked.languages && <SettingsSection Content={Languages} />}
       {isClicked.settings && (
         <>
           <div
@@ -45,13 +47,10 @@ const Navbar = () => {
       >
         <RiSettingsFill className="text-[22px]" />
       </button>
-      {(isClicked.durations || isClicked.settings || isClicked.languages) && (
-        <span
-          onClick={closeAllClicked}
-          className="block backdrop-blur-sm w-screen h-screen absolute top-0"
-        ></span>
+      {isClicked.settings && (
+        <CloseAllClicked />
       )}
-    </div>
+    </>
   );
 };
 

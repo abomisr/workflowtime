@@ -20,8 +20,6 @@ type AppStoreState = {
     initialStates:Record<string,boolean>,
     started:boolean,
     setStarted:(setTo:boolean)=>void;
-    lang:string,
-    setLang:(la:string)=>void;
 }
 
 
@@ -38,7 +36,5 @@ export const useAppStore = add<AppStoreState>()(set => ({
   initialStates:initialStates,
   started: false,
   setStarted: (setTo)=>set(()=>({started:setTo})),
-  lang: "en",
-  setLang:(la) => set(()=>({lang:la})),
 }))
 

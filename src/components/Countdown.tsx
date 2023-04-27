@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import ReactConfetti from "react-confetti";
 
@@ -16,6 +17,8 @@ function Countdown({
   const [lastEvent, setLastEvent] = useState("work");
   const [audioObjects, setAudioObjects] = useState<HTMLAudioElement[]>([]);
 
+  const router = useRouter();
+  const currentLang = router.locale;
 
   useEffect(() => {
     if (!started) return;
@@ -31,6 +34,7 @@ function Countdown({
           return workflowInMinutes * 60;
         }
       });
+      console.log(currentLang)
     }, 1000);
 
     return () => clearInterval(countdownInterval);

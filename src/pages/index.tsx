@@ -16,25 +16,15 @@ export default function Home() {
     breakInMinutes,
     started,
     setStarted,
-    lang,
-    setLang,
   } = useAppStore();
   const [resetCounter, setResetCounter] = useState(1);
 
 
-  // update the lang
   const router = useRouter();
-  useEffect(() => {
-    const currentLang = router.locale;
-    if (typeof window !== "undefined" && currentLang !== lang && currentLang) {
-      setLang(currentLang);
-    }
-    return;
-  }, [router.locale]);
-
+  const currentLang = router.locale;
   
   return (
-    <main dir={lang == "ar" ? "rtl" : "lft"} className={`${isDark && "dark"}`}>
+    <main dir={currentLang == "ar" ? "rtl" : "lft"} className={`${isDark && "dark"}`}>
       <Head>
         <title>Workflow time</title>
         <meta
@@ -48,7 +38,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div className="w-screen h-screen flex flex-col bg-first-light dark:bg-first-dark text-slate-800 dark:text-slate-200">
-        <div className="flex flex-col items-center justify-center h-full gap-10">
+        <div className="relative flex flex-col items-center justify-center h-full gap-10">
           <Countdown
             workflowInMinutes={workflowInMinutes}
             breakInMinutes={breakInMinutes}
