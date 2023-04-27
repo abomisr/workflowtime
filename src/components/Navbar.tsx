@@ -29,6 +29,7 @@ const Navbar = () => {
             </button> */}
             {navbarItems.map((item) => (
               <button
+              key={item.title}
                 onClick={() => handleClick(item.title)}
                 style={{backgroundColor:item.color}}
                 className={`p-2.5 drop-shadow-md text-[28px] text-white rounded-full`}

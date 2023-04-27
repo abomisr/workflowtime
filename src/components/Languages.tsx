@@ -16,6 +16,7 @@ const Languages = () => {
     <>
         {langs.map((lang) => (
             <button
+            key={lang.locale}
             onClick={()=>changeLang(lang.locale)}
             className="bg-first-light dark:bg-first-dark drop-shadow-md p-3 px-16 rounded-md text-[22px]"
             >

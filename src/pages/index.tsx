@@ -1,11 +1,12 @@
 import Countdown from "@/components/Countdown";
 import { useAppStore } from "../../lib/store";
 import Navbar from "@/components/Navbar";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
+
 
 export default function Home() {
   const { t } = useTranslation("common");
@@ -60,11 +61,10 @@ export default function Home() {
   );
 }
 
-export async function getStaticProps({ locale }) {
+export async function getStaticProps({ locale }: { locale: string }) {
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"])),
-      // Will be passed to the page component as props
-    },
-  };
+    }
+  }
 }

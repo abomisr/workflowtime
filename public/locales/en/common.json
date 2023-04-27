@@ -1,5 +1,7 @@
 {
-    "reset": "Reset",
-    "start": "Start !"
-  }
-  
+  "reset": "Reset",
+  "start": "Start !",
+  "save": "Save",
+  "break_duration": "Break duration",
+  "workflow_duration": "Workflow duration"
+}

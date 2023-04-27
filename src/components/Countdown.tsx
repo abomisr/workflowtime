@@ -52,8 +52,8 @@ function Countdown({
     // Create a new audio object and add it to the array
     const audioObject: HTMLAudioElement =
       lastEvent === "work"
-        ? new Audio("/startWorkflow.mp3")
-        : new Audio("/startBreak.mp3");
+        ? new Audio(`/startWorkflow-${currentLang}.mp3`)
+        : new Audio(`/startBreak-${currentLang}.mp3`);
     audioObject.play();
     setAudioObjects([audioObject]);
   

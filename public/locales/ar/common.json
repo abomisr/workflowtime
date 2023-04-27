@@ -1,4 +1,7 @@
 {
   "reset": "أعد الضبط",
-  "start": "إبدأ !"
+  "start": "إبدأ !",
+  "save": "إحفظ",
+  "break_duration": "مدة الإستراحة",
+  "workflow_duration": "مدة العمل"
 }

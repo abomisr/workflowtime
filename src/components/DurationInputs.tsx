@@ -1,8 +1,11 @@
 import { useState } from "react";
 
 import { useAppStore } from "../../lib/store";
+import { useTranslation } from "react-i18next";
 
-const DurationInputs = () => {
+export default function  DurationInputs () {
+  const { t } = useTranslation("common");
+
   const {
     workflowInMinutes,
     setWorkflowInMinutes,
@@ -35,7 +38,7 @@ const DurationInputs = () => {
           type="number"
           required
           min="5"
-          placeholder="Workflow duration"
+          placeholder={t("workflow_duration") || ""}
           className="drop-shadow-sm bg-second-light dark:bg-second-dark"
         />
         <input
@@ -46,7 +49,7 @@ const DurationInputs = () => {
           type="number"
           required
           min="0"
-          placeholder="Break duration"
+          placeholder={t("break_duration") || ""}
           className="drop-shadow-sm bg-second-light dark:bg-second-dark"
         />
         <button
@@ -56,11 +59,10 @@ const DurationInputs = () => {
             workflowInput === workflowInMinutes && breakInput === breakInMinutes
           }
         >
-          Save
+          {t("save")}
         </button>
       </form>
     </>
   );
 };
 
-export default DurationInputs;
