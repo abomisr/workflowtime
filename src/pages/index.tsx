@@ -1,16 +1,22 @@
 import Countdown from "@/components/Countdown";
 import { useAppStore } from "../../lib/store";
 import Navbar from "@/components/Navbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
 
 export default function Home() {
+  const { t } = useTranslation('common')
+
   const { isDark, workflowInMinutes, breakInMinutes, started, setStarted } =
     useAppStore();
   const [resetCounter, setResetCounter] = useState(1);
 
+
   return (
-    <main className={`${isDark && "dark"}`}>
+    <main dir="rtl" className={`${isDark && "dark"}`}>
       <Head>
         <title>Workflow time</title>
         <meta name="description" content="start your workflow time with workflowtime." />
@@ -31,11 +37,25 @@ export default function Home() {
             }
             className={`p-2.5 rounded-md bg-sky-600 text-white px-10`}
           >
-            {started? "Reset":"Start"}
+            {started? t("reset"):t("start")}
           </button>
         </div>
         <Navbar />
       </div>
     </main>
   );
+}
+
+
+
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        'common',
+      ])),
+      // Will be passed to the page component as props
+    },
+  }
 }
