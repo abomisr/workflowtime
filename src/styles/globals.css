@@ -21,6 +21,16 @@
     }
 }
 
+::-webkit-scrollbar{
+    background-color: #e6e6e6;
+    width: 8px;
+    border-radius: 100px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #666;
+    border-radius: 100px;
+}
+
 button{
     opacity: 0.95;
 }
