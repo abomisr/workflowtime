@@ -10,9 +10,11 @@ const Task = ({
   };
 }) => {
   return (
-    <div className={`${task.completed ? "bg-green-600 text-white":"bg-second-light dark:bg-second-dark"} drop-shadow-md rounded-lg p-4`}>
+    <>
+    <div className={`${task.completed ? "bg-green-600 text-white":"bg-second-light dark:bg-second-dark"} drop-shadow-md rounded-lg p-4 `}>
       <p>{task.title}</p>
     </div>
+    </>
   );
 };
 

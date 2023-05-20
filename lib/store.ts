@@ -11,7 +11,8 @@ type task = {
   icon: string;
   title: string;
   duration: number;
-  completed: boolean,
+  completed: boolean;
+  isCurrent?: boolean;
 };
 
 type AppStoreState = {
@@ -43,7 +44,91 @@ let tasks:task[] = [
     duration: 30,
   },
   {
-    id: 1,
+    id: 3,
+    icon: "🏈",
+    title: "Football 3",
+    completed: false,
+    duration: 30,
+  },
+  {
+    id: 4,
+    icon: "🏈",
+    title: "Football 4",
+    completed: false,
+    duration: 30,
+  },
+  {
+    id: 5,
+    icon: "🏈",
+    title: "Football 5",
+    completed: false,
+    duration: 30,
+  },
+  {
+    id: 6,
+    icon: "🏈",
+    title: "Football 6",
+    completed: false,
+    duration: 30,
+  },
+  {
+    id: 7,
+    icon: "🏈",
+    title: "Football 7",
+    completed: false,
+    duration: 30,
+  },
+  {
+    id: 8,
+    icon: "🏈",
+    title: "Football 8",
+    completed: false,
+    duration: 30,
+  },
+  {
+    id: 24,
+    icon: "📚",
+    completed: true,
+    title: "Unit 2 | part 1",
+    duration: 45,
+  },
+  {
+    id: 366,
+    icon: "📚",
+    completed: true,
+    title: "Unit 2 | part 1",
+    duration: 45,
+  },
+  {
+    id: 402,
+    icon: "📚",
+    completed: true,
+    title: "Unit 2 | part 1",
+    duration: 45,
+  },
+  {
+    id: 75,
+    icon: "📚",
+    completed: true,
+    title: "Unit 2 | part 1",
+    duration: 45,
+  },
+  {
+    id: 32,
+    icon: "📚",
+    completed: true,
+    title: "Unit 2 | part 1",
+    duration: 45,
+  },
+  {
+    id: 46,
+    icon: "📚",
+    completed: true,
+    title: "Unit 2 | part 1",
+    duration: 45,
+  },
+  {
+    id: 53,
     icon: "📚",
     completed: true,
     title: "Unit 2 | part 1",
@@ -53,6 +138,7 @@ let tasks:task[] = [
     id: 2,
     icon: "🖥",
     completed: false,
+    isCurrent:true,
     title: "Finish tasks section in workflow time app",
     duration: 90,
   }

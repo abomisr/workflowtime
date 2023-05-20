@@ -6,7 +6,7 @@ import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
-import Tasks from "@/components/Tasks";
+import FloatTask from "@/components/FloatTask";
 
 
 export default function Home() {
@@ -39,11 +39,9 @@ export default function Home() {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <div className="w-screen h-screen flex bg-first-light dark:bg-first-dark text-slate-800 dark:text-slate-200">
-        <div className="flex-1 max-w-[33vw] flex items-center justify-center p-5 bg-second-light/60">
-        <Tasks />
-        </div>
-        <div className="flex-1 max-w-[34vw] relative flex flex-col items-center justify-center h-full gap-10">
+      <div className="w-screen h-screen flex items-center justify-center overflow-hidden bg-first-light dark:bg-first-dark text-slate-800 dark:text-slate-200">
+        <div className="relative flex flex-col items-center justify-center h-full gap-10 w-full">
+        <FloatTask />
           <Countdown
             workflowInMinutes={workflowInMinutes}
             breakInMinutes={breakInMinutes}
@@ -58,9 +56,6 @@ export default function Home() {
           >
             {started ? t("reset") : t("start")}
           </button>
-        </div>
-        <div className="flex-1 max-w-[33vw] ">
-
         </div>
         <Navbar />
       </div>
