@@ -6,9 +6,10 @@ import { useAppStore } from "../../lib/store";
 import DurationInputs from "./DurationInputs";
 import Languages from "./Languages";
 
-import { navbarItems } from "../../constants";
+import { navbarItems, navbarLinks } from "../../constants";
 import CloseAllClicked from "./CloseAllClicked";
 import SettingsSection from "./SettingsSection";
+import Link from "next/link";
 
 const Navbar = () => {
   const { handleClick, isClicked } = useAppStore();
@@ -24,9 +25,16 @@ const Navbar = () => {
             className="fixed bottom-[90px] right-3 p-3  drop-shadow-sm z-[1000] bg-second-light dark:bg-second-dark rounded-2xl flex items-center justify-center gap-7 flex-col"
           >
             <ThemeToggle />
-            {/* <button onClick={()=>handleClick("durations")} className="p-2.5 drop-shadow-md text-[28px] bg-sky-600 text-white rounded-full">
-              <GiDuration />
-            </button> */}
+            {navbarLinks.map((item) => (
+              <Link
+              key={item.link}
+              href={`/${item.link}`}
+                style={{backgroundColor:item.color}}
+                className={`p-2.5 drop-shadow-md text-[28px] text-white rounded-full`}
+              >
+                <item.icon />
+              </Link>
+            ))}
             {navbarItems.map((item) => (
               <button
               key={item.title}

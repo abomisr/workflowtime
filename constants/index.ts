@@ -1,9 +1,11 @@
+import { FaTasks } from "react-icons/fa";
 import { GiDuration } from "react-icons/gi";
 import { GrLanguage } from "react-icons/gr";
 
 
 type navbarItemsType = {
-    title : string,
+    title? : string,
+    link? : string,
     color : string,
     icon : typeof GiDuration
 }[]
@@ -20,6 +22,13 @@ const navbarItems:navbarItemsType = [
         icon: GrLanguage,
     },
 ]
+const navbarLinks:navbarItemsType = [
+    {
+        link:"tasks",
+        color:"#3bd13b",
+        icon:FaTasks,
+    }
+]
 
 const langs = [
     {
@@ -34,4 +43,4 @@ const langs = [
     },
 ]
 
-export {navbarItems,langs}
+export {navbarItems,langs,navbarLinks}
