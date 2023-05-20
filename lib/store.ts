@@ -11,6 +11,7 @@ type task = {
   icon: string;
   title: string;
   duration: number;
+  bDuration: number;
   completed: boolean;
   isCurrent?: boolean;
 };
@@ -29,9 +30,11 @@ type AppStoreState = {
   started: boolean;
   setStarted: (setTo: boolean) => void;
   tasks: task[];
+  completeTask: (id:number)=>void;
   addTask: (task: task) => void;
   rmTask: (id: number) => void;
   upTask: (newTask:task)=>void;
+  setCTask: (id:number)=>void;
 };
 
 // TODO: remove this ===========
@@ -42,6 +45,7 @@ let tasks:task[] = [
     title: "Football",
     completed: false,
     duration: 30,
+    bDuration: 30,
   },
   {
     id: 3,
@@ -49,6 +53,7 @@ let tasks:task[] = [
     title: "Football 3",
     completed: false,
     duration: 30,
+    bDuration: 30,
   },
   {
     id: 4,
@@ -56,6 +61,7 @@ let tasks:task[] = [
     title: "Football 4",
     completed: false,
     duration: 30,
+    bDuration: 30,
   },
   {
     id: 5,
@@ -63,6 +69,7 @@ let tasks:task[] = [
     title: "Football 5",
     completed: false,
     duration: 30,
+    bDuration: 30,
   },
   {
     id: 6,
@@ -70,6 +77,7 @@ let tasks:task[] = [
     title: "Football 6",
     completed: false,
     duration: 30,
+    bDuration: 30,
   },
   {
     id: 7,
@@ -77,6 +85,7 @@ let tasks:task[] = [
     title: "Football 7",
     completed: false,
     duration: 30,
+    bDuration: 30,
   },
   {
     id: 8,
@@ -84,6 +93,7 @@ let tasks:task[] = [
     title: "Football 8",
     completed: false,
     duration: 30,
+    bDuration: 30,
   },
   {
     id: 24,
@@ -91,6 +101,7 @@ let tasks:task[] = [
     completed: true,
     title: "Unit 2 | part 1",
     duration: 45,
+    bDuration: 45,
   },
   {
     id: 366,
@@ -98,6 +109,7 @@ let tasks:task[] = [
     completed: true,
     title: "Unit 2 | part 1",
     duration: 45,
+    bDuration: 45,
   },
   {
     id: 402,
@@ -105,6 +117,7 @@ let tasks:task[] = [
     completed: true,
     title: "Unit 2 | part 1",
     duration: 45,
+    bDuration: 45,
   },
   {
     id: 75,
@@ -112,6 +125,7 @@ let tasks:task[] = [
     completed: true,
     title: "Unit 2 | part 1",
     duration: 45,
+    bDuration: 45,
   },
   {
     id: 32,
@@ -119,6 +133,7 @@ let tasks:task[] = [
     completed: true,
     title: "Unit 2 | part 1",
     duration: 45,
+    bDuration: 45,
   },
   {
     id: 46,
@@ -126,6 +141,7 @@ let tasks:task[] = [
     completed: true,
     title: "Unit 2 | part 1",
     duration: 45,
+    bDuration: 45,
   },
   {
     id: 53,
@@ -133,14 +149,16 @@ let tasks:task[] = [
     completed: true,
     title: "Unit 2 | part 1",
     duration: 45,
+    bDuration: 45,
   },
   {
     id: 2,
     icon: "🖥",
     completed: false,
-    isCurrent:true,
+    isCurrent:false,
     title: "Finish tasks section in workflow time app",
     duration: 90,
+    bDuration: 90,
   }
 ]
 //! ============================
@@ -164,6 +182,8 @@ export const useAppStore = add<AppStoreState>()((set) => ({
   setStarted: (setTo) => set(() => ({ started: setTo })),
   tasks: tasks,
   addTask: (task) => set((state) => ({ tasks: [...state.tasks, task] })),
+  completeTask: (id)=> set((state)=>({tasks:state.tasks.filter((task)=> {if(task.id === id)  {task.completed = true; task.isCurrent = false;}; return state.tasks})})),
   rmTask: (id) => set((state) => ({ tasks: state.tasks.filter((task) => task.id !== id) })),
-  upTask: (newTask)=> set((state)=>({tasks:state.tasks.filter((task)=> {if(task.id === newTask.id)  {task = newTask}; return state.tasks})}))
+  upTask: (newTask)=> set((state)=>({tasks:state.tasks.filter((task)=> {if(task.id === newTask.id)  {task = newTask}; return state.tasks})})),
+  setCTask: (id)=> set((state)=>({tasks:state.tasks.filter((task)=> {if(task.id === id)  {task.isCurrent = true;state.workflowInMinutes = task.duration;state.breakInMinutes = task.bDuration}else{task.isCurrent = false}; return state.tasks})})),
 }));

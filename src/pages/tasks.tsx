@@ -19,9 +19,6 @@ const Tasks = () => {
           <Task key={task.id} task={task} />
         ))}
       </div>
-          <div className="">
-            <Task task={waitedTasks[0]} />
-          </div>
 
       <div className="flex flex-col gap-5 max-h-[40%] overflow-y-scroll p-5 relative">
         {waitedTasks.slice(1,).map((task)=>(

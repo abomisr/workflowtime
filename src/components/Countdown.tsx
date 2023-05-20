@@ -20,6 +20,11 @@ function Countdown({
   const router = useRouter();
   const currentLang = router.locale;
 
+
+  useEffect(()=>{
+    setCountdown(workflowInMinutes * 60);
+  },[workflowInMinutes,breakInMinutes])
+
   useEffect(() => {
     if (!started) return;
     const countdownInterval = setInterval(() => {
@@ -34,7 +39,6 @@ function Countdown({
           return workflowInMinutes * 60;
         }
       });
-      console.log(currentLang)
     }, 1000);
 
     return () => clearInterval(countdownInterval);

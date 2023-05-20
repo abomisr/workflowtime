@@ -3,5 +3,6 @@
   "start": "إبدأ !",
   "save": "حفظ",
   "break_duration": "مدة الإستراحة",
-  "workflow_duration": "مدة العمل"
+  "workflow_duration": "مدة العمل",
+  "start_with":"إختر مهمة للبدأ بها"
 }
