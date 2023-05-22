@@ -29,7 +29,7 @@ const AddTask = () => {
             </div>
             <select className="outline-none p-2.5 rounded-md">
                 {eisMatrix.map(({ text, id }) => (
-                    <option value={id}>{text}</option>
+                    <option value={id} key={id}>{text}</option>
                 ))}
             </select>
             <button type="submit" className="bg-blue-500 text-white p-3 w-full rounded-3xl">Save</button>

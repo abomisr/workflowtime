@@ -10,6 +10,7 @@ const Links = () => {
             <Link
             href={`/${link.link}`}
             onClick={closeAllClicked}
+            key={link.link}
             className="flex items-center justify-center bg-second-light dark:bg-second-dark drop-shadow-lg rounded-3xl"
             >
               <div
