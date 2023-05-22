@@ -8,7 +8,7 @@ const Task = ({
 }: {
   task: {
     id: number;
-    icon: string;
+    icon?: string;
     title: string;
     duration: number;
     completed: boolean;

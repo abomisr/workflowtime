@@ -38,7 +38,7 @@ const Tasks = () => {
       return;
     }
 
-      let newTask = tasks.filter((task)=> {if(task.id === +draggableId) {task.matrixType = destination.droppableId;return task}})[0]
+      let newTask = tasks.filter((task)=> {if(task.id === +draggableId) {task.priority = destination.droppableId;return task}})[0]
       tasks.splice(source.index, 1)
       tasks.splice(destination.index, 0,newTask)
 
@@ -46,7 +46,7 @@ const Tasks = () => {
   }
 
   return (
-    <main dir={currentLang == "ar" ? "rtl" : "lft"} className={`${isDark && "dark"}`}>
+    <main dir={currentLang == "ar" ? "rtl" : "lft"} className={`${isDark && "dark"} overflow-x-hidden`}>
       <Head>
         <title>Tasks | Workflow time</title>
         <meta
@@ -78,7 +78,7 @@ const Tasks = () => {
                       <span className="md:hidden uppercase font-bold">{text}</span>
                       <div style={{backgroundColor:color}} className={`min-h-[250px] p-4 flex flex-col justify-start items-center overflow-x-hidden rounded-md relative gap-4`} ref={provided.innerRef} {...provided.droppableProps}>
                         {tasks.map((task, index) => {
-                          if (task.matrixType === id && !task.completed) return (
+                          if (task.priority === id && !task.completed) return (
                             <Task key={task.id} index={index} task={task} />
                           )
                         })}
@@ -93,13 +93,13 @@ const Tasks = () => {
           </div>
           <Droppable droppableId={"0"}>
             {(provided,snapshot)=>(
-              <span ref={provided.innerRef} {...provided.droppableProps} style={snapshot.isDraggingOver? {backgroundColor:"#ff5959"}:{}} className="bg-red-300 p-6 text-[27px] rounded-sm drop-shadow-md absolute bottom-0 left-0"><FaTrash /></span>
+              <span ref={provided.innerRef} {...provided.droppableProps} style={snapshot.isDraggingOver? {backgroundColor:"#ff5959"}:{}} className="bg-red-300 text-slate-700 p-6 text-[27px] rounded-sm drop-shadow-md absolute bottom-0 left-0"><FaTrash /></span>
             )}
           </Droppable>
           
+      <Navbar />
         </div>
       </DragDropContext>
-      <Navbar />
     </main>
   )
 }
