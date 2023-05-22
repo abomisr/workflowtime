@@ -2,6 +2,8 @@ import { FaTasks } from "react-icons/fa";
 import { GiDuration } from "react-icons/gi";
 import { GrLanguage } from "react-icons/gr";
 import { MdAddTask } from "react-icons/md";
+import { BiLinkAlt } from "react-icons/bi";
+import { AiTwotoneHome } from "react-icons/ai";
 
 type navbarItemsType = {
   title: string;
@@ -17,6 +19,11 @@ const navbarItems: navbarItemsType = [
     icon: MdAddTask,
   },
   {
+    title: "links",
+    color: "#7a97ff",
+    icon: BiLinkAlt,
+  },
+  {
     title: "durations",
     color: "blue",
     icon: GiDuration,
@@ -28,6 +35,12 @@ const navbarItems: navbarItemsType = [
   },
 ];
 const navbarLinks: navbarItemsType = [
+  {
+    link: "",
+    title: "Home",
+    color: "tomato",
+    icon: AiTwotoneHome,
+  },
   {
     link: "tasks",
     title: "Tasks",

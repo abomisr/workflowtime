@@ -6,11 +6,12 @@ import { useAppStore } from "../../lib/store";
 import DurationInputs from "./DurationInputs";
 import Languages from "./Languages";
 
-import { navbarItems, navbarLinks } from "../../constants";
+import { navbarItems } from "../../constants";
 import CloseAllClicked from "./CloseAllClicked";
 import SettingsSection from "./SettingsSection";
 import Link from "next/link";
 import AddTask from "./AddTask";
+import Links from "./Links";
 
 const Navbar = () => {
   const { handleClick, isClicked } = useAppStore();
@@ -20,6 +21,7 @@ const Navbar = () => {
       {isClicked.durations && <SettingsSection Content={DurationInputs} />}
       {isClicked.languages && <SettingsSection Content={Languages} />}
       {isClicked.addTask && <SettingsSection Content={AddTask} />}
+      {isClicked.links && <SettingsSection Content={Links} />}
       {isClicked.settings && (
         <>
           <div
@@ -27,16 +29,6 @@ const Navbar = () => {
             className="fixed bottom-[90px] right-3 p-3  drop-shadow-sm z-[1000] bg-second-light dark:bg-second-dark rounded-2xl flex items-center justify-center gap-7 flex-col"
           >
             <ThemeToggle />
-            {navbarLinks.map((item) => (
-              <Link
-              key={item.link}
-              href={`/${item.link}`}
-                style={{backgroundColor:item.color}}
-                className={`p-2.5 drop-shadow-md text-[28px] text-white rounded-full`}
-              >
-                <item.icon />
-              </Link>
-            ))}
             {navbarItems.map((item) => (
               <button
               key={item.title}
