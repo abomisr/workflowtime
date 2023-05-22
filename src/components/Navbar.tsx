@@ -18,6 +18,7 @@ const Navbar = () => {
     <>
       {isClicked.durations && <SettingsSection Content={DurationInputs} />}
       {isClicked.languages && <SettingsSection Content={Languages} />}
+      {isClicked.addTask && <SettingsSection Content={Languages} />}
       {isClicked.settings && (
         <>
           <div
