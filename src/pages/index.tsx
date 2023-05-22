@@ -28,10 +28,10 @@ export default function Home() {
   return (
     <main dir={currentLang == "ar" ? "rtl" : "lft"} className={`${isDark && "dark"}`}>
       <Head>
-        <title>Workflow time</title>
+        <title>WorkflowTime</title>
         <meta
           name="description"
-          content="start your workflow time with workflowtime."
+          content="start your workflow time with workflowTime."
         />
         <meta
           name="keywords"

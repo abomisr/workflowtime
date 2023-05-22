@@ -14,6 +14,7 @@ function Countdown({
   resetCounter: number;
 }) {
   const [countdown, setCountdown] = useState(workflowInMinutes * 60);
+  const [endOn, setEndOn] = useState<number | null>(null);
   const [lastEvent, setLastEvent] = useState("work");
   const [audioObjects, setAudioObjects] = useState<HTMLAudioElement[]>([]);
 
@@ -25,24 +26,49 @@ function Countdown({
     setCountdown(workflowInMinutes * 60);
   },[workflowInMinutes,breakInMinutes])
 
+
+  const minutes = Math.floor(countdown / 60);
+  const seconds = Math.round(countdown % 60);
+    const formattedCountdown = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+
+
+    const setEndOnFunc = () =>{
+      if(lastEvent === "work"){
+        setEndOn((Date.now() /1000) + workflowInMinutes *60)
+      }else{
+        setEndOn((Date.now() /1000) + breakInMinutes *60)
+      }
+    }
+
   useEffect(() => {
     if (!started) return;
+    
+    if(endOn === null) {
+      setEndOnFunc()
+      return;
+    }
+
     const countdownInterval = setInterval(() => {
-      setCountdown((prevCountdown) => {
-        if (prevCountdown > 0) {
-          return prevCountdown - 1;
+      let newCountDown = endOn - (Date.now()/1000)
+      setCountdown(() => {
+        if (newCountDown > 0) {
+          return newCountDown;
         } else if (lastEvent === "work") {
           setLastEvent("break");
+          setEndOn(null)
           return breakInMinutes * 60;
         } else {
           setLastEvent("work");
+          setEndOn(null)
           return workflowInMinutes * 60;
         }
       });
+
+      document.title = `${formattedCountdown} | ${lastEvent.toUpperCase()} | WorkflowTime`
     }, 1000);
 
     return () => clearInterval(countdownInterval);
-  }, [countdown, lastEvent, started]);
+  }, [countdown, lastEvent, started,endOn]);
 
   useEffect(() => {
     if (!started) return;
@@ -62,7 +88,7 @@ function Countdown({
     setAudioObjects([audioObject]);
   
     // Set the countdown based on the last event
-    setCountdown(lastEvent === "work" ? workflowInMinutes * 60 : breakInMinutes * 60);
+    setEndOnFunc()
 
     // Return the cleanup function to stop and remove the audio objects
     return () => {
@@ -73,9 +99,6 @@ function Countdown({
     };
   }, [workflowInMinutes, breakInMinutes,lastEvent, started, resetCounter]);
 
-  const minutes = Math.floor(countdown / 60);
-  const seconds = countdown % 60;
-  //   const formattedCountdown = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 
   return (
     <div className="flex items-center justify-center w-full flex-col gap-4">   {/* md:flex-row */}

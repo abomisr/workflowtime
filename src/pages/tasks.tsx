@@ -43,10 +43,10 @@ const Tasks = () => {
   return (
     <main dir={currentLang == "ar" ? "rtl" : "lft"} className={`${isDark && "dark"} overflow-x-hidden`}>
       <Head>
-        <title>Tasks | Workflow time</title>
+        <title>Tasks | WorkflowTime</title>
         <meta
           name="description"
-          content="start your workflow time with workflowtime."
+          content="start your workflow time with workflowTime."
         />
         <meta
           name="keywords"
@@ -94,7 +94,7 @@ const Tasks = () => {
             <span></span>
             <p className="font-bold text-white">Completed Tasks</p>
             <button onClick={rmCompletedTasks}>
-            <GiBroom className="bg-white drop-shadow-md p-2 text-[35px] rounded-full" />
+            <GiBroom className="bg-white text-slate-900 drop-shadow-md p-2 text-[35px] rounded-full" />
             </button>
             </div>
             {tasks.map((task) =>{
@@ -113,7 +113,7 @@ const Tasks = () => {
         </div>
         <Droppable droppableId={"0"}>
           {(provided, snapshot) => (
-            <span ref={provided.innerRef} {...provided.droppableProps} style={snapshot.isDraggingOver ? { backgroundColor: "#ff5959" } : {}} className="bg-red-300 text-slate-700 p-6 text-[27px] rounded-sm drop-shadow-md fixed bottom-0 left-0"><FaTrash /></span>
+            <span ref={provided.innerRef} {...provided.droppableProps} style={snapshot.isDraggingOver ? { backgroundColor: "#ff5959" } : {}} className="bg-red-300 text-slate-700 p-6 text-[27px] rounded-tr-2xl drop-shadow-md fixed bottom-0 left-0"><FaTrash /></span>
           )}
         </Droppable>
         <Navbar />

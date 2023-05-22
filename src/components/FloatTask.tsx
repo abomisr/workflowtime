@@ -27,24 +27,24 @@ const FloatTask = () => {
     }
   );
 
-   useEffect(()=>{
-      let cTask = tasks.find((task)=> task.isCurrent && !task.completed )
+  //  useEffect(()=>{
+  //     let cTask = tasks.find((task)=> task.isCurrent && !task.completed )
 
-      setCurrentTask(cTask)
-   },[tasks])
-
-   useEffect(()=>{
-    
-   })
+  //     setCurrentTask(cTask)
+  //  },[tasks])
 
    
   const selectTask = (id:any)=>{
-    if(id == "empty") return
-    setCTask(+id)
+    if(id == "empty") return;
+
+      let cTask = tasks.find((task)=> task.id == +id )
+
+    setCurrentTask(cTask)
+    // setCTask(+id)
   }
 
   const completeTaskFunc = () =>{
-  
+    setCurrentTask(undefined)
     currentTask && completeTask(currentTask.id)
   }
 
