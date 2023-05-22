@@ -13,6 +13,7 @@ type task = {
   duration: number;
   bDuration: number;
   completed: boolean;
+  matrixType: string;
   isCurrent?: boolean;
 };
 
@@ -46,6 +47,7 @@ let tasks:task[] = [
     completed: false,
     duration: 30,
     bDuration: 30,
+    matrixType: "1",
   },
   {
     id: 3,
@@ -54,6 +56,7 @@ let tasks:task[] = [
     completed: false,
     duration: 30,
     bDuration: 30,
+    matrixType: "2",
   },
   {
     id: 4,
@@ -62,6 +65,7 @@ let tasks:task[] = [
     completed: false,
     duration: 30,
     bDuration: 30,
+    matrixType: "1",
   },
   {
     id: 5,
@@ -70,6 +74,7 @@ let tasks:task[] = [
     completed: false,
     duration: 30,
     bDuration: 30,
+    matrixType: "2",
   },
   {
     id: 6,
@@ -78,6 +83,7 @@ let tasks:task[] = [
     completed: false,
     duration: 30,
     bDuration: 30,
+    matrixType: "2",
   },
   {
     id: 7,
@@ -86,6 +92,7 @@ let tasks:task[] = [
     completed: false,
     duration: 30,
     bDuration: 30,
+    matrixType: "2",
   },
   {
     id: 8,
@@ -94,6 +101,7 @@ let tasks:task[] = [
     completed: false,
     duration: 30,
     bDuration: 30,
+    matrixType: "2",
   },
   {
     id: 24,
@@ -102,6 +110,7 @@ let tasks:task[] = [
     title: "Unit 2 | part 1",
     duration: 45,
     bDuration: 45,
+    matrixType: "2",
   },
   {
     id: 366,
@@ -110,6 +119,7 @@ let tasks:task[] = [
     title: "Unit 2 | part 1",
     duration: 45,
     bDuration: 45,
+    matrixType: "2",
   },
   {
     id: 402,
@@ -118,6 +128,7 @@ let tasks:task[] = [
     title: "Unit 2 | part 1",
     duration: 45,
     bDuration: 45,
+    matrixType: "3",
   },
   {
     id: 75,
@@ -126,6 +137,7 @@ let tasks:task[] = [
     title: "Unit 2 | part 1",
     duration: 45,
     bDuration: 45,
+    matrixType: "2",
   },
   {
     id: 32,
@@ -134,6 +146,7 @@ let tasks:task[] = [
     title: "Unit 2 | part 1",
     duration: 45,
     bDuration: 45,
+    matrixType: "3",
   },
   {
     id: 46,
@@ -142,6 +155,7 @@ let tasks:task[] = [
     title: "Unit 2 | part 1",
     duration: 45,
     bDuration: 45,
+    matrixType: "3",
   },
   {
     id: 53,
@@ -150,15 +164,17 @@ let tasks:task[] = [
     title: "Unit 2 | part 1",
     duration: 45,
     bDuration: 45,
+    matrixType: "2",
   },
   {
-    id: 2,
+    id: 536,
     icon: "🖥",
     completed: false,
     isCurrent:false,
     title: "Finish tasks section in workflow time app",
     duration: 90,
     bDuration: 90,
+    matrixType: "2",
   }
 ]
 //! ============================

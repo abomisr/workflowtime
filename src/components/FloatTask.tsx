@@ -32,6 +32,10 @@ const FloatTask = () => {
       setCurrentTask(cTask)
    },[tasks])
 
+   useEffect(()=>{
+    
+   })
+
    
   const selectTask = (id:any)=>{
     if(id == "empty") return

@@ -5,7 +5,8 @@ import { GrLanguage } from "react-icons/gr";
 
 type navbarItemsType = {
     title? : string,
-    link? : string,
+    link
+? : string,
     color : string,
     icon : typeof GiDuration
 }[]

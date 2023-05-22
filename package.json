@@ -23,6 +23,7 @@
     "next-i18next": "^13.2.2",
     "postcss": "8.4.23",
     "react": "18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
     "react-confetti": "^6.1.0",
     "react-dom": "18.2.0",
     "react-i18next": "^12.2.2",
@@ -32,6 +33,7 @@
     "zustand": "^4.3.7"
   },
   "devDependencies": {
+    "@types/react-beautiful-dnd": "^13.1.4",
     "@types/react-i18next": "^8.1.0"
   }
 }
