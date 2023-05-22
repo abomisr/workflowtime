@@ -1,12 +1,15 @@
 import Link from "next/link"
 import { navbarLinks } from "../../constants"
+import { useAppStore } from "../../lib/store"
 
 const Links = () => {
+    const {closeAllClicked} = useAppStore()
   return (
     <div className="flex items-center justify-center flex-col gap-4">
         {navbarLinks.map((link) => (
             <Link
             href={`/${link.link}`}
+            onClick={closeAllClicked}
             className="flex items-center justify-center bg-second-light dark:bg-second-dark drop-shadow-lg rounded-3xl"
             >
               <div
