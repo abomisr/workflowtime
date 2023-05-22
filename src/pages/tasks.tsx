@@ -9,6 +9,7 @@ import Task from "../components/Task";
 import { eisMatrix } from "../../constants";
 import { FaTrash } from "react-icons/fa";
 import Navbar from "@/components/Navbar";
+import { GiBroom } from "react-icons/gi";
 
 
 
@@ -16,33 +17,27 @@ const Tasks = () => {
   const router = useRouter();
   const currentLang = router.locale;
 
-  const { tasks, isDark,rmTask } = useAppStore();
+  const { tasks, isDark, rmTask,rmCompletedTasks,setTasks } = useAppStore();
 
-  const [completedTasks, setCompletedTasks] = useState(tasks)
-  const [waitedTasks, setWaitedTasks] = useState(tasks)
 
-  useEffect(() => {
-    setCompletedTasks(tasks.filter(t => t.completed))
-    setWaitedTasks(tasks.filter(t => !t.completed))
-  }, [tasks])
+  const onDragEnd = (result: Record<string, any>) => {
+    const { destination, source, draggableId } = result;
 
-  const onDragEnd = (result:Record<string, any>) => {
-    const {destination, source, draggableId} = result;
+    if (!destination) return;
+    if (destination.droppableId === source.droppableId && destination.index === source.index) return;
 
-    if(!destination) return;
-    if(destination.droppableId === source.droppableId && destination.index === source.index) return;
-
-    if(destination.droppableId == "0"){
+    if (destination.droppableId == "0") {
       rmTask(+draggableId)
-      console.log(tasks)
       return;
     }
 
-      let newTask = tasks.filter((task)=> {if(task.id === +draggableId) {task.priority = destination.droppableId;return task}})[0]
-      tasks.splice(source.index, 1)
-      tasks.splice(destination.index, 0,newTask)
+    let newTask = tasks.filter((task) => { if (task.id === +draggableId) { task.priority = destination.droppableId; return task } })[0]
+    let newTasks = [...tasks]
+    
+    newTasks.splice(source.index, 1)
+    newTasks.splice(destination.index, 0, newTask)
 
-     
+    setTasks(newTasks)
   }
 
   return (
@@ -60,7 +55,7 @@ const Tasks = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <DragDropContext onDragEnd={onDragEnd} >
-        <div className="w-screen min-h-screen h-fit bg-first-light dark:bg-first-dark text-slate-800 dark:text-slate-200 flex items-center justify-center">
+        <div className="overflow-x-hidden w-screen min-h-screen h-fit bg-first-light dark:bg-first-dark text-slate-800 dark:text-slate-200 flex flex-col items-center justify-center">
           <div className="w-[600px] md:h-[580px] max-w-[85vw] h-[90vh]  grid md:grid-cols-2 gap-4 m-auto relative">
             <div className="absolute top-0 translate-y-[-100%] p-1 md:flex items-center justify-around w-full hidden uppercase font-bold">
               <span>Urgent</span>
@@ -76,7 +71,7 @@ const Tasks = () => {
                   {(provided: Record<string, any>) => (
                     <>
                       <span className="md:hidden uppercase font-bold">{text}</span>
-                      <div style={{backgroundColor:color}} className={`min-h-[250px] p-4 flex flex-col justify-start items-center overflow-x-hidden rounded-md relative gap-4`} ref={provided.innerRef} {...provided.droppableProps}>
+                      <div style={{ backgroundColor: color }} className={`min-h-[250px] p-4 flex flex-col justify-start items-center overflow-x-hidden rounded-md relative gap-4`} ref={provided.innerRef} {...provided.droppableProps}>
                         {tasks.map((task, index) => {
                           if (task.priority === id && !task.completed) return (
                             <Task key={task.id} index={index} task={task} />
@@ -91,14 +86,37 @@ const Tasks = () => {
             }
 
           </div>
-          <Droppable droppableId={"0"}>
-            {(provided,snapshot)=>(
-              <span ref={provided.innerRef} {...provided.droppableProps} style={snapshot.isDraggingOver? {backgroundColor:"#ff5959"}:{}} className="bg-red-300 text-slate-700 p-6 text-[27px] rounded-sm drop-shadow-md absolute bottom-0 left-0"><FaTrash /></span>
-            )}
-          </Droppable>
-          
-      <Navbar />
+
         </div>
+        <div className="overflow-x-hidden w-screen min-h-screen h-fit bg-first-light dark:bg-first-dark text-slate-800 dark:text-slate-200 flex flex-col items-center justify-center">
+          <div className={`min-h-[250px] p-4 md:w-[50%] w-[80%] md:mt-20 mt-[450px] px-[20px] flex flex-col justify-start items-center overflow-x-hidden rounded-md relative gap-4 bg-green-600`}>
+            <div className="flex items-center justify-between w-full">
+            <span></span>
+            <p className="font-bold text-white">Completed Tasks</p>
+            <button onClick={rmCompletedTasks}>
+            <GiBroom className="bg-white drop-shadow-md p-2 text-[35px] rounded-full" />
+            </button>
+            </div>
+            {tasks.map((task) =>{
+            if(task.completed) return (
+                <div key={task.id} className="h-fit w-full p-4 pb-6 bg-second-light dark:bg-second-dark drop-shadow-md rounded-lg select-none" >
+                <div className="flex justify-start items-center gap-2">
+                  <p>{task.title}</p>
+                </div>
+                <span className="text-gray-400 font-bold text-[13px] absolute bottom-1 right-1">
+                  {task.duration}m
+                </span>
+              </div>
+              )
+})}
+          </div>
+        </div>
+        <Droppable droppableId={"0"}>
+          {(provided, snapshot) => (
+            <span ref={provided.innerRef} {...provided.droppableProps} style={snapshot.isDraggingOver ? { backgroundColor: "#ff5959" } : {}} className="bg-red-300 text-slate-700 p-6 text-[27px] rounded-sm drop-shadow-md fixed bottom-0 left-0"><FaTrash /></span>
+          )}
+        </Droppable>
+        <Navbar />
       </DragDropContext>
     </main>
   )
