@@ -28,10 +28,10 @@ export default function Home() {
   return (
     <main dir={currentLang == "ar" ? "rtl" : "lft"} className={`${isDark && "dark"}`}>
       <Head>
-        <title>WorkflowTime</title>
+        <title>PoMatrix</title>
         <meta
           name="description"
-          content="start your workflow time with workflowTime."
+          content="start your workflow time with PoMatrix."
         />
         <meta
           name="keywords"

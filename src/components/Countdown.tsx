@@ -64,7 +64,7 @@ function Countdown({
         }
       });
 
-      document.title = `${formattedCountdown} | ${lastEvent.toUpperCase()} | WorkflowTime`
+      document.title = `${formattedCountdown} | ${lastEvent.toUpperCase()} | PoMatrix`
     }, 1000);
 
     return () => clearInterval(countdownInterval);

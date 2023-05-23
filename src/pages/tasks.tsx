@@ -43,10 +43,10 @@ const Tasks = () => {
   return (
     <main dir={currentLang == "ar" ? "rtl" : "lft"} className={`${isDark && "dark"} overflow-x-hidden`}>
       <Head>
-        <title>Tasks | WorkflowTime</title>
+        <title>Tasks | PoMatrix</title>
         <meta
           name="description"
-          content="start your workflow time with workflowTime."
+          content="start your workflow time with PoMatrix."
         />
         <meta
           name="keywords"
