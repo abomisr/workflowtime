@@ -76,7 +76,7 @@ const FloatTask = () => {
       ) : (
         <select onChange={(e)=>selectTask(e.target.value)} className="bg-second-light dark:bg-second-dark p-3 drop-shadow-md rounded-sm outline-none cursor-pointer w-full">
             <option value={"empty"}>{t("start_with")}</option>
-            {tasks.filter((task)=> !task.completed).map((task)=>(
+            {tasks.filter((task)=> !task.completed).sort((t1,t2)=> +t1.priority - +t2.priority).map((task)=>(
                 <option key={task.id} value={task.id} className="py-3 cursor-pointer" style={{cursor:"pointer"}}>{task.title}</option>
             ))}
         </select>
