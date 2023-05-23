@@ -24,8 +24,8 @@ const AddTask = () => {
         <form onSubmit={handleFormSubmit} className="text-slate-900 flex items-center justify-center flex-col gap-3">
             <input type="text" placeholder="Title" required />
             <div className="flex items-center justify-center max-w-full gap-3">
-                <input type="number" placeholder={`Work Duration | default ${workflowInMinutes}m`} className="" />
-                <input type="number" placeholder={`Break Duration | default ${breakInMinutes}m`} className="" />
+                <input type="number" min="5" placeholder={`Work Duration | default ${workflowInMinutes}m`} className="" />
+                <input type="number" min="0" placeholder={`Break Duration | default ${breakInMinutes}m`} className="" />
             </div>
             <select className="outline-none p-2.5 rounded-md">
                 {eisMatrix.map(({ text, id }) => (

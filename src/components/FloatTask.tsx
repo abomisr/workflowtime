@@ -15,7 +15,7 @@ const FloatTask = () => {
     { title: string; duration: number; id:number; priority:string } | undefined
   >(undefined);
 
-  const { tasks,setCTask,completeTask,handleClick } = useAppStore();
+  const { tasks,setCTask,completeTask,handleClick} = useAppStore();
   const [{ x, y }, api] = useSpring(() => ({ x: 0, y: 0 }));
 
   const bind = useDrag(
@@ -33,14 +33,15 @@ const FloatTask = () => {
   //     setCurrentTask(cTask)
   //  },[tasks])
 
-   
   const selectTask = (id:any)=>{
     if(id == "empty") return;
 
       let cTask = tasks.find((task)=> task.id == +id )
 
+      if(!cTask) return;
+
     setCurrentTask(cTask)
-    // setCTask(+id)
+    setCTask(+id)
   }
 
   const completeTaskFunc = () =>{

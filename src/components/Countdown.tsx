@@ -34,9 +34,9 @@ function Countdown({
 
     const setEndOnFunc = () =>{
       if(lastEvent === "work"){
-        setEndOn((Date.now() /1000) + workflowInMinutes *60)
+        setEndOn((Date.now() /1000) + (workflowInMinutes *60))
       }else{
-        setEndOn((Date.now() /1000) + breakInMinutes *60)
+        setEndOn((Date.now() /1000) + (breakInMinutes *60))
       }
     }
 
