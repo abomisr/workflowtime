@@ -1,8 +1,8 @@
 <h1 align="center">
   بسم الله الرحمن الرحيم
-  <h1>
+  </h1>
     
-    Welcome to PoMatrix, the ultimate productivity app that helps you manage your tasks and time more efficiently. PoMatrix is designed to boost your productivity and provide you with an easy-to-use platform that incorporates the popular Pomodoro technique and the Eisenhower matrix.
+Welcome to PoMatrix, the ultimate productivity app that helps you manage your tasks and time more efficiently. PoMatrix is designed to boost your productivity and provide you with an easy-to-use platform that incorporates the popular Pomodoro technique and the Eisenhower matrix.
 
 With PoMatrix, you can easily organize your tasks and prioritize them using the Eisenhower matrix. The app provides both Arabic and English language options, making it accessible to a wider range of users. Additionally, PoMatrix allows you to drag and drop tasks, mark completed tasks, and even celebrates your accomplishments with confetti when you finish each Pomodoro session.
 
