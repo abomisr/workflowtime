@@ -9,3 +9,7 @@ With PoMatrix, you can easily organize your tasks and prioritize them using the 
 One of the most unique features of PoMatrix is its use of a Pomodoro timer that is dependent on the clock, not setInterval. This ensures that you receive the most accurate timing possible, helping you stay on track and focused. Moreover, the app provides motivational voice prompts when you start and end a Pomodoro session, which can help keep you motivated and energized throughout your workday.
 
 In summary, PoMatrix is an all-encompassing productivity app that helps you stay organized, motivated, and focused. So why wait? Visit PoMatrix today and start your journey towards a more productive and efficient lifestyle!
+
+
+## short
+PoMatrix is the ultimate productivity app that combines the Pomodoro technique and the Eisenhower matrix to help you manage your tasks and time more efficiently. With features like drag and drop tasks, completed task tracking, and Arabic and English language options, PoMatrix is the perfect tool for boosting your productivity. The app also uses a Pomodoro timer that is dependent on the clock, provides motivational voice prompts, and even celebrates your accomplishments with confetti. Start your journey towards a more productive lifestyle today with PoMatrix!
